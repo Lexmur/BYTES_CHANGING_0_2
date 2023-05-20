@@ -4,7 +4,7 @@
 using namespace std;
 
 //‘ункци€ вывода числа в двоичном виде
-void print_bin_view(int num, int mask);
+void print_bin_view(uint32_t num, uint32_t mask);
 
 int main()
 {
@@ -21,7 +21,7 @@ int main()
 	//¬ходной контроль
 	if (num > 4294967295)
 	{
-		cout << "¬ведЄное число превышает размер 32битного числа или €вл€етс€ отрицательным";
+		cout << "¬ведЄнное число превышает размер 32битного числа или €вл€етс€ отрицательным";
 		return 1;
 	}
 
@@ -54,7 +54,7 @@ int main()
 }
 
 
-void print_bin_view(int num, int mask)
+void print_bin_view(uint32_t num, uint32_t mask)
 {
 	uint32_t bytes;//—оздание переменной дл€ вывода бита
 	for (int i = 0; i < 32; i++)
