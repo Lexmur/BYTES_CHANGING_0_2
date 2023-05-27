@@ -4,7 +4,7 @@
 using namespace std;
 
 //Функция вывода числа в двоичном виде
-void print_bin_view(uint32_t num, uint32_t mask);
+void print_bin_view(unsigned int num, unsigned int mask);
 
 int main()
 {
@@ -27,20 +27,20 @@ int main()
 
 	cout << "\n Введёное число: \t" << num << hex << "\t 0x" << num << endl;
 
-	uint32_t mask = 2147483648;// Создание маски для выделения крайнего левого бита 
+	unsigned int mask = 2147483648;// Создание маски для выделения крайнего левого бита 
 	// Маска вида : 10000000000000000000000000000000
 
 //Вывод числа в битовом виде
 	print_bin_view(num, mask);
 	cout << endl;
 
-	uint32_t byte0 = num & 255; //Получаем 0 байт,где 255 это 0000 0000 0000 0000 0000 0000 1111 1111
+	unsigned int byte0 = num & 255; //Получаем 0 байт,где 255 это 0000 0000 0000 0000 0000 0000 1111 1111
 	byte0 = byte0 << 16;//Передвигаем 0 байт на позицию 2 байта
 
-	uint32_t byte2 = num & 16711680; //Получаем 2 байт, где 16711680 это 0000 0000 1111 1111 0000 0000 0000 0000
+	unsigned int byte2 = num & 16711680; //Получаем 2 байт, где 16711680 это 0000 0000 1111 1111 0000 0000 0000 0000
 	byte2 = byte2 >> 16;//Передвигаем 2 байт на позицию 0 байта
 
-	uint32_t mask_0_2_bytes = byte0 | byte2; // Объединение 0 и 2 байта в одну маску
+	unsigned int mask_0_2_bytes = byte0 | byte2; // Объединение 0 и 2 байта в одну маску
 
 	num = num & 4278255360; //Выключение 0 и 2 байтов, применением маски 1111 1111 0000 0000 1111 1111 0000 0000
 	num = num | mask_0_2_bytes; // Добавление 0 и 2 байтов, поменянных местами
@@ -54,9 +54,9 @@ int main()
 }
 
 
-void print_bin_view(uint32_t num, uint32_t mask)
+void print_bin_view(unsigned int num, unsigned int mask)
 {
-	uint32_t bytes;//Создание переменной для вывода бита
+	unsigned int bytes;//Создание переменной для вывода бита
 	for (int i = 0; i < 32; i++)
 	{
 		if (i % 4 == 0)
